@@ -1,6 +1,9 @@
-//
-// Created by 97253 on 05/01/2023.
-//
+#include "graph.h"
+
+pnode getNode(pnode head , int a);
+
+void insert_node_cmd(pnode *head);
+void delete_node_cmd(pnode *head);
 
 #ifndef C_EX4_NODES_H
 #define C_EX4_NODES_H
