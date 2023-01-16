@@ -28,37 +28,50 @@ void insertEdge(pnode  node , pnode end , int weight) {
 
 
 void delete_edges(pedge edge){
+    if(edge == NULL) return;
     if(edge->next != NULL) {
         delete_edges(edge->next);
     }
     free(edge);
 }
 
-void delete_edges_of_node(pnode  *head , int name) {
-    pnode node = getNode(*head, name);
-    pnode curr = *head;
-    while (curr != NULL) {
-        printf("%d\n", curr->node_num);
-        if (curr != node) {
-            pedge ed = curr->edges;
-            while (ed != NULL && ed->endpoint == node) {
-                curr->edges = ed->next;
-                free(ed);
-                ed = curr->edges;
-            }
-            while (ed != NULL && ed->next != NULL) {
-                if (ed->next->endpoint == node) {
-                    pedge toClear = ed->next;
-                    ed->next = toClear->next;
-                    free(toClear);
-                }
-                else {
-                    ed = ed->next;
-                }
-            }
-        }
-        curr = curr->next;
-    }
+void nInsertEdge(pnode head, pnode source ) {
+    int end, weight;
+    pnode endNode;
+    while (scanf("%d", &end)) {
+        //  printf("%d\n" , end);
+        if (scanf("%d", &weight) != EOF) {
+            //    printf("%d\n" , weight);
+            endNode = getNode(head, end);
+            insertEdge(source, endNode, weight);
 
+        }
+    }
 }
 
+    void delete_edges_of_node(pnode *head, int name) {
+        pnode node = getNode(*head, name);
+        pnode curr = *head;
+        while (curr != NULL) {
+            printf("%d\n", curr->node_num);
+            if (curr != node) {
+                pedge ed = curr->edges;
+                while (ed != NULL && ed->endpoint == node) {
+                    curr->edges = ed->next;
+                    free(ed);
+                    ed = curr->edges;
+                }
+                while (ed != NULL && ed->next != NULL) {
+                    if (ed->next->endpoint == node) {
+                        pedge toClear = ed->next;
+                        ed->next = toClear->next;
+                        free(toClear);
+                    } else {
+                        ed = ed->next;
+                    }
+                }
+            }
+            curr = curr->next;
+        }
+
+    }

@@ -3,6 +3,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+int getCount(pnode head){
+    pnode curr = head;
+    int count = 0;
+    while (curr){
+        count++;
+        curr = curr->next;
+    }
+    return count;
+}
+
 pnode getNode(pnode head , int a){
     pnode curr = head;
     while (curr != NULL){
@@ -47,10 +57,10 @@ void insert_node_cmd(pnode *head){
 }
 
 void delete_node_cmd(pnode *head) {
-    int name = 2;
+    int name;
+    scanf("%d", &name);
     delete_edges_of_node(head , name);
     pnode first = *head;
-   //scanf("%d", &name);
     if (first->node_num == name) {
         delete_edges(first->edges);
         *head = first->next;

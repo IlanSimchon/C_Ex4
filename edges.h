@@ -2,6 +2,7 @@
 
 
 void insertEdge(pnode  node , pnode end , int weight);
+void nInsertEdge(pnode head , pnode source);
 void delete_edges(pedge edege);
 void delete_edges_of_node(pnode  *head , int name);
 
