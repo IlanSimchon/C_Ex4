@@ -27,7 +27,7 @@ int main() {
                 delete_node_cmd(graph);
                 break;
             case 'S':
-                printf("Dijkstra shortest path: %d\n" , shortsPath_cmd(*graph));
+                printf("Dijsktra shortest path: %d\n" , shortsPath_cmd(*graph));
                 break;
             case 'T':
                 printf("TSP shortest path: %d\n" , TSP_cmd(*graph));
