@@ -27,16 +27,17 @@ int main() {
                 delete_node_cmd(graph);
                 break;
             case 'S':
-                printf("Dijsktra shortest path: %d\n" , shortsPath_cmd(*graph));
+                printf("Dijsktra shortest path: %d \n" , shortsPath_cmd(*graph));
                 break;
             case 'T':
-                printf("TSP shortest path: %d\n" , TSP_cmd(*graph));
+                printf("TSP shortest path: %d \n" , TSP_cmd(*graph));
                 break;
             default:
                 break;
 
         }
     }
+    deleteGraph_cmd(graph);
     free(graph);
     return 0;
 }
