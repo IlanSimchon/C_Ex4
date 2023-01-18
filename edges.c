@@ -9,6 +9,7 @@ void insertEdge(pnode  node , pnode end , int weight) {
     pedge ed = (pedge)malloc(sizeof(edge));
     pedge curr = node->edges;
     if (curr == NULL) {
+        //printf("here\n");
         ed->weight = weight;
         ed->endpoint = end;
         ed->next = NULL;
@@ -16,7 +17,7 @@ void insertEdge(pnode  node , pnode end , int weight) {
     }
     else {
         while (curr->next != NULL) {
-            //  printf("%d\n", weight);
+            if(curr->endpoint->node_num == end->node_num) return;
             curr = curr->next;
             //  printf("%d\n", weight);
         }
@@ -27,33 +28,32 @@ void insertEdge(pnode  node , pnode end , int weight) {
 }
 
 
-void delete_edges(pedge edge){
-    if(edge == NULL) return;
-    if(edge->next != NULL) {
-        delete_edges(edge->next);
+void delete_edges(pedge edge) {
+    if (edge) {
+        if (edge->next != NULL) {
+            delete_edges(edge->next);
+        }
+      //  printf("now free: %d\n" , edge->weight);
+        free(edge);
     }
-    free(edge);
 }
 
-void nInsertEdge(pnode head, pnode source ) {
-    int end, weight;
-    pnode endNode;
-    while (scanf("%d", &end)) {
-        //  printf("%d\n" , end);
-        if (scanf("%d", &weight) != EOF) {
-            //    printf("%d\n" , weight);
-            endNode = getNode(head, end);
-            insertEdge(source, endNode, weight);
+    void nInsertEdge(pnode head, pnode source) {
+        int end, weight;
+        pnode endNode;
+        while (scanf("%d", &end)) {
+            if (scanf("%d", &weight) != EOF) {
+                endNode = getNode(head, end);
+                insertEdge(source, endNode, weight);
 
+            }
         }
     }
-}
 
     void delete_edges_of_node(pnode *head, int name) {
         pnode node = getNode(*head, name);
         pnode curr = *head;
         while (curr != NULL) {
-            printf("%d\n", curr->node_num);
             if (curr != node) {
                 pedge ed = curr->edges;
                 while (ed != NULL && ed->endpoint == node) {
@@ -75,3 +75,4 @@ void nInsertEdge(pnode head, pnode source ) {
         }
 
     }
+

@@ -5,9 +5,6 @@
 #include "nodes.h"
 
 
-
-
-
 void build_graph_cmd(pnode *head) {
     if (*head) {
         deleteGraph_cmd(head);
@@ -29,37 +26,13 @@ void build_graph_cmd(pnode *head) {
             curr = graph;
             i++;
         }
-//        int node, end, weight;
-//        pnode endNode;
-//        // curr = *head;
-//        getchar();
-//        while (scanf("%c", &c) && c == 'n') {
-//            // printf("%c\n" , c);
-//            scanf("%d", &node);
-//            //printf("%d\n" , node);
-//            curr = getNode(*head, node);
-//            while (scanf("%d", &end)) {
-//                //  printf("%d\n" , end);
-//                if (scanf("%d", &weight) != EOF) {
-//                    //    printf("%d\n" , weight);
-//                    endNode = getNode(*head, end);
-//                    insertEdge(curr, endNode, weight);
-//
-//                }
-//            }
-//
-//        }
-//    }
-//    return c;
     }
 }
 
 void printGraph_cmd(pnode head){
     if(head != NULL) {
         pnode curr = head;
-        // printf("%d\n" , curr->node_num);
         while (curr != NULL) {
-            // printf("%d\n" , curr->node_num);
             printf("node %d:  ", curr->node_num);
             pedge ed = curr->edges;
             while (ed != NULL) {
@@ -71,6 +44,9 @@ void printGraph_cmd(pnode head){
             curr = curr->next;
         }
     }
+    else{
+        printf("The graph is NULL\n");
+    }
 }
 
 void deleteGraph_cmd(pnode *head){
@@ -78,26 +54,7 @@ void deleteGraph_cmd(pnode *head){
     if(curr->next){
         deleteGraph_cmd(&(curr->next));
     }
-   //printf("%d\n" , curr->node_num);
     delete_edges(curr->edges);
-   // printf("%d\n" , curr->node_num);
-    free(curr);
-   // printf("%d\n" , curr->node_num);
-
+    free(*head);
+    *head = NULL;
 }
-
-//void deleteGraph_cmd(pnode* head){
-//    int start , end;
-//    scanf("%d" , &start);
-//    scanf("%d" , &end);
-//    int numOfNoeds = getCount(*head);
-//    pnode st = getNode(*head , start);
-//    pnode en = getNode(*head , end);
-//
-//
-//}
-
-
-
-
-

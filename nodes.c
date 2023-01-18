@@ -28,15 +28,9 @@ void insert_node_cmd(pnode *head){
     scanf("%d" , &name);
     pnode curr = getNode(*head , name);
     if(curr != NULL){
-        pedge ed = curr->edges;
-        pedge edNext = ed->next;
-        while (edNext != NULL) {
-            free(ed);
-            ed = edNext;
-            edNext = edNext->next;
-        }
-        free(ed);
-    }
+            delete_edges(curr->edges);
+            curr->edges = NULL;
+       }
     else {
         curr = *head;
         pnode new = (pnode) malloc(sizeof (node));
@@ -48,12 +42,9 @@ void insert_node_cmd(pnode *head){
         curr = curr->next;
     }
     int end , weight;
-    scanf("%d" , &end);
-    while (scanf("%d" , &weight)){
+    while (scanf("%d" , &end) && scanf("%d" , &weight)){
         insertEdge(curr , getNode(*head ,end) , weight);
-        scanf("%d" , &end);
     }
-
 }
 
 void delete_node_cmd(pnode *head) {

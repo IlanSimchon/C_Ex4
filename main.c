@@ -1,25 +1,11 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "graph.h"
 #include "edges.h"
 #include "nodes.h"
-#include <stdlib.h>
 #include "algo.h"
 
 int main() {
-//    char option;
-//
-//   pnode *graph = (pnode*)malloc(sizeof(pnode));
-//    scanf("%c" , &option);
-//    printf("%c\n" , option);
-//
-//    build_graph_cmd(graph);
-//    insertEdge((*graph)->next->next->next , ((*graph)->next->next) , 3);
-//    insertEdge((*graph)->next , ((*graph)->next->next) , 6);
-//
-//    printGraph_cmd(*graph);
-//    int a = shortsPath_cmd(*graph);
-//    printf("%d\n" , a);
-
    char option;
    int start;
     pnode source;
@@ -41,10 +27,10 @@ int main() {
                 delete_node_cmd(graph);
                 break;
             case 'S':
-                printf("%d\n" , shortsPath_cmd(*graph));
+                printf("Dijkstra shortest path: %d\n" , shortsPath_cmd(*graph));
                 break;
             case 'T':
-              //  TSP_cmd(graph);
+                printf("TSP shortest path: %d\n" , TSP_cmd(*graph));
                 break;
             default:
                 break;
