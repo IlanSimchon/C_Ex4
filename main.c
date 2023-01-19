@@ -7,18 +7,27 @@
 
 int main() {
    char option;
-   int start;
-    pnode source;
+ //  int start;
+//    pnode source;
+//    source->next = NULL;
+//    source->edges = NULL;
+//    source->edges = NULL;
+//    source->next = NULL;
     pnode *graph = (pnode*)malloc(sizeof(pnode));
+  //  *graph = NULL;
+ // graph = NULL;
+  *graph = NULL;
+//    (**graph).edges = NULL;
+//    (**graph).next = NULL;
     while (scanf("%c" , &option) != EOF) {
         switch (option) {
             case 'A':
                 build_graph_cmd(graph);
                 break;
             case 'n':
-                scanf("%d" , &start);
-                source = getNode(*graph , start);
-                nInsertEdge(*graph , source);
+//                scanf("%d" , &start);
+//                source = getNode(*graph , start);
+                nInsertEdge(*graph);
                 break;
             case 'B':
                 insert_node_cmd(graph);

@@ -35,6 +35,8 @@ void insert_node_cmd(pnode *head){
         curr = *head;
         pnode new = (pnode) malloc(sizeof (node));
         new->node_num = name;
+        new->next = NULL;
+        new->edges = NULL;
         while (curr->next != NULL){
             curr = curr->next;
         }

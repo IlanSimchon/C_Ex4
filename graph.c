@@ -10,6 +10,8 @@ void build_graph_cmd(pnode *head) {
         deleteGraph_cmd(head);
     }
     pnode graph = (pnode) malloc(sizeof(node));
+    graph->next= NULL;
+    graph->edges = NULL;
     *(head) = graph;
     int numOfNodes;
     pnode curr = graph;
@@ -22,6 +24,7 @@ void build_graph_cmd(pnode *head) {
             graph = (pnode) malloc(sizeof(node));
             graph->node_num = i;
             graph->next = NULL;
+            graph->edges = NULL;
             curr->next = graph;
             curr = graph;
             i++;
